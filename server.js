@@ -17,6 +17,16 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  // let searchQuery = req.query.search;
+  //   res.send("Hello World! You searched for " + searchQuery);
+  response.json(quotes);
+});
+
+
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +39,8 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
+
+app.listen(3000, () => console.log("Server is listening on port 3000. !"));
