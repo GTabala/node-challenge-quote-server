@@ -18,14 +18,24 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 app.get("/quotes", function (request, response) {
-  // let searchQuery = req.query.search;
-  //   res.send("Hello World! You searched for " + searchQuery);
-  response.json(quotes);
+   response.json(quotes);
 });
 
 
 app.get("/quotes/random", function (request, response) {
   response.json(pickFromArray(quotes));
+});
+
+app.get("/search", function(request, response) {
+  let term = request.query.term;
+  let quoteHas = request.query.quotehas;  
+  let authorHas = request.query.authorhas;  
+  (quoteHas && authorHas) ? response.json(quotes.filter(item => item.quote.toLowerCase().includes(quoteHas.toLowerCase()) && 
+  item.author.toLowerCase().includes(authorHas.toLowerCase()))):
+  quoteHas ?  response.json(quotes.filter(item => item.quote.toLowerCase().includes(quoteHas.toLowerCase()))):  
+  authorHas ? response.json(quotes.filter(item => item.author.toLowerCase().includes(authorHas.toLowerCase()))):
+  response.json(quotes.filter(item => item.quote.toLowerCase().includes(term.toLowerCase()) || 
+  item.author.toLowerCase().includes(term.toLowerCase())));
 });
 
 //...END OF YOUR CODE
