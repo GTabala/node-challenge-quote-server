@@ -28,10 +28,6 @@ app.get("/hospitals", function (request, response) {
   response.send("returns hospitals list for stratford");
 });
 
-// //START OF YOUR CODE...
-// app.get("/quotes", function (request, response) {
-//    response.json(quotes);
-// });
 
 
 // app.get("/quotes/random", function (request, response) {
