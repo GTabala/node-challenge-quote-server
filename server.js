@@ -30,9 +30,7 @@ app.get("/hospitals", function (request, response) {
 
 
 
-// app.get("/quotes/random", function (request, response) {
-//   response.json(pickFromArray(quotes));
-// });
+
 
 // app.get("/search", function(request, response) {
 //   let term = request.query.term;
